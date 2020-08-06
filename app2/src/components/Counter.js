@@ -9,3 +9,5 @@ function Counter(props) {
     </>
   );
 }
+
+export default Counter

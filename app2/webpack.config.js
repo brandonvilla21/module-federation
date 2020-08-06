@@ -10,6 +10,9 @@ module.exports = {
     contentBase: path.join(__dirname, 'dist'),
     port: 3001,
   },
+  output: {
+    publicPath: "http://localhost:3001/", // Added this
+  },
   module: {
     rules: [
       {

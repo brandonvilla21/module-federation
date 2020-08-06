@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = {
   entry: './src/index',
@@ -7,6 +8,9 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     port: 3000,
+  },
+  output: {
+    publicPath: "http://localhost:3000/",
   },
   module: {
     rules: [
@@ -21,6 +25,14 @@ module.exports = {
     ],
   },
   plugins: [
+    new ModuleFederationPlugin({
+      name: 'app1',
+      library: { type: 'var', name: 'app1' },
+      remotes: {
+        app2: 'app2',
+      },
+      shared: ['react', 'react-dom'],
+    }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
