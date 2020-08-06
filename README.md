@@ -12,13 +12,13 @@ The more you add code into your `src` folder the heavier is this `main.js` file 
 
 That means we care about the size of our bundle but we also want to keep adding new features to our projects
 
-### Is there a solution for this problem?
+### Is there a solution to this problem?
 
 There is, there are strategies to break that `main.js` file into chunks of smaller files in order to avoid loading all your code at first render. This is called Code Splitting ([https://webpack.js.org/guides/code-splitting/](https://webpack.js.org/guides/code-splitting/))
 
-There are different techniques to accomplish this, one is defining more than one entry point into your Webpack configuration but it comes with some pitfalls, sometimes you will have duplicated modules between chunks and both chunks will include these modules so it will increase your chunks size
+There are different techniques to accomplish this, one is defining more than one entry point into your Webpack configuration but it comes with some pitfalls, sometimes you will have duplicated modules between chunks and both chunks will include these modules so it will increase the size of your chunks.
 
-There's another popular and more accepted way, this consist in using the `import()` syntax which conforms to the ES Proposal in order to have dynamic imports in JS ([https://github.com/tc39/proposal-dynamic-import](https://github.com/tc39/proposal-dynamic-import))
+There's another popular and more accepted way, this consists in using the `import()` syntax which conforms to the ES Proposal in order to have dynamic imports in JS ([https://github.com/tc39/proposal-dynamic-import](https://github.com/tc39/proposal-dynamic-import))
 
 Using this approach looks something like this:
 
@@ -214,7 +214,7 @@ new ModuleFederationPlugin({
 }),
 ```
 
-This is the main piece of configuration in order to share dependencies of this second project with the first one.
+This is the main piece of configuration in order to share the dependencies of this second project with the first one.
 
 Before consuming this second application from the first one, let's create the Counter component:
 
@@ -295,7 +295,7 @@ plugins: [
 ...
 ```
 
-The difference between this Webpack config and the other relies on `expose` and `remote`. Where in the first app, we expose the component that we want to take from the first app, so in this app we specify the name of the remote app
+The difference between this Webpack config and the other relies on `expose` and `remote`. Where in the first app, we expose the component that we want to take from the first app, so in this app, we specify the name of the remote app
 
 We also need to specify the `remoteEntry.js` file from the remote host:
 
@@ -355,7 +355,7 @@ Since we can have separate bundles of JavaScript into separate projects, it give
 
 You will be able to have totally independent applications with the feeling of a single website. This allows big teams to break down into smaller and more efficient teams which will scale vertically from the Frontend to the BE and DevOps team.
 
-This way we will have autonomous teams which won't depend in others in order to deliver new features
+This way we will have autonomous teams which won't depend on others in order to deliver new features
 
 It could be represented like this:
 
@@ -365,9 +365,9 @@ It could be represented like this:
 
 ### Design system incorporation at runtime
 
-Currently there are multiple ways to implement a design system at build time (npm/yarn packages, GitHub packages, Bit.dev) but this could represent an issue for some projects. Whenever you need to update some component from your design system, you will have to re-build you application and deploy it again in order to have the latest version of your design system in production.
+Currently, there are multiple ways to implement a design system at build time (npm/yarn packages, GitHub packages, Bit.dev) but this could represent an issue for some projects. Whenever you need to update some components from your design system, you will have to re-build your application and deploy it again in order to have the latest version of your design system in production.
 
-With a design system at runtime you will be able to get the latest version of your design system into your application without going through the build and re-deploy process of you entire application since you will get the components from a different origin and at runtime.
+With a design system at runtime, you will be able to get the latest version of your design system into your application without going through the build and re-deploy process of your entire application since you will get the components from a different origin and at runtime.
 
 These two are just a few of the possibilities with Federated Modules.
 
