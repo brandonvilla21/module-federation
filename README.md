@@ -24,9 +24,9 @@ Using this approach looks something like this:
 
 ```jsx
 function test() {
-	import('./some-file-inside-my-project.js')
-		.then(module => module.loadItemsInPage())
-		.catch(error => alert('There was an error'))
+  import('./some-file-inside-my-project.js')
+    .then(module => module.loadItemsInPage())
+    .catch(error => alert('There was an error'))
 }
 ```
 
@@ -49,13 +49,13 @@ For this, we will use Webpack 5 which currently is on version beta. This is how 
 
 ...
 
-	"scripts": {
-    "start": "webpack-dev-server --open"
-		"build": "webpack --mode production"
+  "scripts": {
+   "start": "webpack-dev-server --open",
+   "build": "webpack --mode production"
   },
   "author": "",
   "license": "ISC",
-	"devDependencies": {
+  "devDependencies": {
     "@babel/core": "7.10.3",
     "@babel/preset-react": "7.10.1",
     "babel-loader": "8.1.0",
@@ -151,7 +151,7 @@ module.exports = {
   mode: 'development',
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
-		// Change port to 3001
+    // Change port to 3001
     port: 3001,
   },
 	output: {
@@ -170,7 +170,7 @@ module.exports = {
     ],
   },
   plugins: [
-		// Use Plugin
+    // Use Plugin
     new ModuleFederationPlugin({
       name: 'app2',
       library: { type: 'var', name: 'app2' },
@@ -224,13 +224,13 @@ Before consuming this second application from the first one, let's create the Co
 import React from 'react'
 
 function Counter(props) {
-	return (
-		<>
-			<p>Count: {props.count}</p>
-      <button onClick={props.onIncrement}>Increment</button>
-      <button onClick={props.onDecrement}>Decrement</button>
-		</>
-	)
+  return (
+     <>
+       <p>Count: {props.count}</p>
+       <button onClick={props.onIncrement}>Increment</button>
+       <button onClick={props.onDecrement}>Decrement</button>
+     </>
+  )
 }
 
 export default Counter
@@ -361,7 +361,7 @@ It could be represented like this:
 
 ![Micro-frontends%20Module%20Federation%20with%20WebPack%205%20dcf6c7f5c47a4cb9904b822b96a32d0e/Untitled.png](img/e2e-microfrontend-teams.png)
 
-Source Image [https://blog.coffeeapplied.com/building-uis-in-devops-microservices-environment-part-2-micro-frontends-and-composite-uis-ab3d4ac394ed](https://blog.coffeeapplied.com/building-uis-in-devops-microservices-environment-part-2-micro-frontends-and-composite-uis-ab3d4ac394ed)
+[Source Image](https://micro-frontends.org/)
 
 ### Design system incorporation at runtime
 
