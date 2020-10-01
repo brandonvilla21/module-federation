@@ -1,6 +1,6 @@
 # Micro-frontends: Module Federation with WebPack 5
 
-### What it Module Federation?
+### What is Module Federation?
 
 It is basically a JavaScript architecture. It allows a JavaScript application to dynamically load code from another application (a different Webpack build).
 
